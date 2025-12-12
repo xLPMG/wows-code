@@ -1,4 +1,4 @@
-# Report - je-pageranked Approach
+# Report - fsu-pageranked Approach
 
 We added the method ``run_experiment`` to evaluate and compare different approaches of `retriever.py` to each other.
 

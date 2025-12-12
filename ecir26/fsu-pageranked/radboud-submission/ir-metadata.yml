@@ -19,10 +19,10 @@ method:
 
     Retrieval is done with BM25+BO1 on the composed text. That means, we added query expansion with B01 model to the BM25 retrieval.
 
-  name: je-pageranked-bm25-all-fields-bo1-qe
+  name: fsu-pageranked-bm25-all-fields-bo1-qe
 
 actor:
-  team: je-pageranked
+  team: fsu-pageranked
 
 data:
   test collection:
