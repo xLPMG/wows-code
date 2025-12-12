@@ -1,0 +1,48 @@
+# We use the ir-metadata standard to describe and process runs.
+# The fields below are mandatory, you can add additional metadata if you like.
+# There are two libraries that automate and simplify tracking of experimental metadata that you can use optionally:
+#
+#   - The metadata module of [repro_eval](https://www.ir-metadata.org/software/):
+#     Tracks the platform and implementation of your experiments.
+#
+#   - The [tirex_tracker](https://github.com/tira-io/tirex-tracker/):
+#     Tracks the platform, implementation, and resources (e.g., CPU, GPU, RAM, emissions, etc.) of your experiments.
+#
+# See https://www.ir-metadata.org for more details.
+
+method:
+  description: |
+    Modified extract_text_of_document to compose document text from all text fields (title, description and text).
+    To add more weight to title and description fields, title is added three times and description two times.
+    That is, document text is composed as:
+    text = title + title + title + description + description + text
+
+    Retrieval is done with BM25+BO1 on the composed text. That means, we added query expansion with B01 model to the BM25 retrieval.
+
+  name: je-pageranked-bm25-all-fields-bo1-qe
+
+actor:
+  team: je-pageranked
+
+data:
+  test collection:
+    name: radboud-validation-20251114-training
+
+platform:
+  software:
+    # Which software and tools did you use for training, tunning and running your system?
+    # You can maintain the software that you used manually.
+    # Alternatively, you can use repro_eval or the tirex_tracker to track this.
+    libraries:
+      - python-terrier
+      - tira>=0.0.188
+      - ir_datasets
+      - tirex-tracker==0.2.17
+      - click
+
+implementation:
+  source:
+    # Please provide a reference to your code if possible.
+    # If you can not share your code, you can delete the implementation section.
+    # The repro_eval and/or tirex_tracker tools can track this automatically, including commits, branches, etc.
+    repository: https://github.com/xLPMG/wows-code
