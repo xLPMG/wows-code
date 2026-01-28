@@ -44,7 +44,7 @@ def run_retrieval(output, index, dataset, retrieval_model, text_field_to_retriev
 
     topics = pt.datasets.get_dataset(f"irds:ir-lab-wise-2025/{dataset}").get_topics("title")
 
-    retriever = pt.terrier.Retriever(index, wmodel=retrieval_model, controls={"qemodel" : "Bo1", "qe" : "on"})
+    retriever = pt.terrier.Retriever(index, wmodel=retrieval_model, controls={"qemodel" : "Bo1", "qe" : "on"}) # Using Bo1 query expansion
 
     description = f"This is a PyTerrier retriever using the retrieval model {retriever} retrieving on all text fields (title, description and text) of the text representation of the documents. It uses Bo1 query expansion."
 
